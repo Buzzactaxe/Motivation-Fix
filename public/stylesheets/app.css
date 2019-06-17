@@ -1,0 +1,43 @@
+i.icon {
+     font-size: 2em;
+}
+
+#msg {
+     margin-top: 6.5em;
+     margin-bottom: 2.0em;
+}
+
+#delete {
+     display: inline;
+}
+
+#auth {
+     font-style: italic;
+}
+
+#note {
+     font-style: italic;
+}
+
+.raised.padded.text.container {
+     padding-bottom: 4em;
+}
+
+
+.left-aligned-container {
+     float: right;
+}
+
+
+.description {
+     padding: 15px;
+}
+
+.right.menu span {
+     font-style: italic;
+     color: blueviolet;
+}
+
+.ui.huge.header {
+     padding-bottom: 30px;
+}

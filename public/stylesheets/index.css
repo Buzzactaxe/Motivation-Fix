@@ -1,0 +1,19 @@
+.ui.header {
+    text-align: center;
+}
+
+span.library {
+    font-size: 1.75em;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 15px;
+}
+
+#note {
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
+.sub.header {
+    padding-top: 20px;
+}

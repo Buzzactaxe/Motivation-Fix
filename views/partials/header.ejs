@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title>From the Header File</title>
+          <link rel="stylesheet" type= "text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+          </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+          </script>
+
+          <link rel="stylesheet" type= "text/css" href="/stylesheets/app.css">
+          <link rel="stylesheet" type= "text/css" href="/stylesheets/index.css">
+          <link rel="stylesheet" type= "text/css" href="/stylesheets/sidebar.css">
+          <link rel="stylesheet" type= "text/css" href="/stylesheets/main.css">
+     </head>
+     <body>
+
+          <div class="ui sidebar vertical left inverted menu">
+               <div class="item">
+                    <a class="ui logo icon image" href="/blogs">
+                         <img src="/images/placeholderLogo.png">
+                    </a>
+                    <a href="/blogs">
+                         <b>Meditation Fix</b>
+                    </a>
+               </div>                   
+                    
+               <a href="/blogs/new" class="item">New Blog</a>
+               <% if(!currentUser){ %>
+                    <a href="/Login" class="item">Login</a>
+                    <a href="/register" class="item">Sign Up</a>
+               <% }else{ %>
+                    <a href="#" class="item">Signed in As '<span> <%= currentUser.username %> </span> '</a>
+                    <a href="/logout" class="item">Logout</a>
+               <% } %> 
+          </div>
+
+          <div class="ui basic icon top fixed inverted menu">
+                    <a id="toggle" class="item">
+                         <i class="sidebar icon"></i>
+                         Menu
+                    </a>   
+          </div>
+
+          
+          <div class="dimmed pusher">
+               <div id="msg" class="ui main text container">
+                    <% if(error && error.length > 0){ %>
+                         <div id="msg" class="ui mini negative message">
+                              <%= error %>
+                         </div>
+                    <% } %>
+                    <% if(success && success.length > 0){ %>
+                         <div id="msg" class="ui mini positive message">
+                              <%= success %>
+                         </div>
+                    <% } %>
+               </div>
+
+          

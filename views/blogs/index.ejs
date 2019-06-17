@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+
+
+<div class="ui main text container">
+     <h1 class="ui header">
+          <span class="library">
+               Meditation Fix
+          </span>
+          <div class="sub header">
+               <span class="tagline">
+                    Welcome to the place where you can share your thought, inspiration, motivation and personal experiences.
+                    Feel free to be creative in this space and share your positive energy to everyone.
+               </span>
+               <div class="ui divider"></div>
+               <p id="note">
+                    Note: this website is in Beta, more features will be added the next months. Stay Tuned for future announcements and updates by following me here: <a href=https://twitter.com/LuporiValliant> Valliant Lupori<a>
+               </p>
+          </div>
+          <a href="/blogs/new" class="positive ui button">Add New Blog</a>
+     </h1>
+     <div class="ui top attached segment">
+          <div class="ui divided items">
+               <% blogs.forEach(function(blog){ %>
+                    <div class="item">
+                         <div id="img" class= "ui small bordered image">
+                              <img src= "<%= blog.image %>" > 
+                         </div>
+                         <div class= "content">
+                              <a class="header" href="/blogs/<%=blog.id %>"><%= blog.title %></a>
+                              <div class="meta">
+                                   <span><%= blog.created.toDateString() %></span>
+                              </div>
+                              <div class= "description">
+                                   <p><%- blog.body.substring(0, 100) %>...</p> 
+                              </div>
+                              <div class="extra">
+                                   <a class="ui floated small basic violet button" href="/blogs/<%=blog.id %>">
+                                        Read More
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+               <% }); %>
+          </div>
+     </div>
+</div>
+
+<% include ../partials/footer %>
