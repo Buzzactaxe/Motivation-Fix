@@ -21,7 +21,7 @@ var commentRoutes = require('./routes/comments'),
 env.config();
 mongoose
 	.connect(
-		'mongodb://localhost:27017/motivation_fix', {
+		'mongodb+srv://buzzactaxe:buzzactaxe88@cluster0-co6r4.mongodb.net/motivationfix?retryWrites=true&w=majority', {
 			useNewUrlParser: true,
 			useCreateIndex: true
 		}
