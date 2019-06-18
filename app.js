@@ -17,7 +17,7 @@ var commentRoutes = require('./routes/comments'),
 	blogRoutes = require('./routes/blogs'),
 	indexRoutes = require('./routes/index');
 
-console.log(process.env.DATABASEURL);
+// console.log(process.env.DATABASEURL);
 
 // config. APP
 env.config();
