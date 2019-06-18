@@ -17,15 +17,17 @@ var commentRoutes = require('./routes/comments'),
 	blogRoutes = require('./routes/blogs'),
 	indexRoutes = require('./routes/index');
 
-//config. APP
+console.log(process.env.DATABASEURL);
+
+// config. APP
 env.config();
+
+//Closed Environment DB
 mongoose
-	.connect(
-		'mongodb+srv://buzzactaxe:buzzactaxe88@cluster0-co6r4.mongodb.net/motivationfix?retryWrites=true&w=majority', {
-			useNewUrlParser: true,
-			useCreateIndex: true
-		}
-	)
+	.connect(process.env.DATABASEURL, {
+		useNewUrlParser: true,
+		useCreateIndex: true
+	})
 	.then(() => {
 		console.log('Connected to DB!');
 	})
@@ -33,9 +35,21 @@ mongoose
 		console.log('ERROR:', err.message);
 	});
 
-// mongoose.connect("mongodb://localhost:27017/motivation_fix", {
-// 	useNewUrlParser: true
-// });
+//Heroku Environment DB
+// mongoose
+// 	.connect(
+// 		'mongodb+srv://buzzactaxe:buzzactaxe88@cluster0-co6r4.mongodb.net/motivationfix?retryWrites=true&w=majority',
+// 		{
+// 			useNewUrlParser: true,
+// 			useCreateIndex: true
+// 		}
+// 	)
+// 	.then(() => {
+// 		console.log('Connected to DB!');
+// 	})
+// 	.catch((err) => {
+// 		console.log('ERROR:', err.message);
+// 	});
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -64,7 +78,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //auth middleware
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	res.locals.error = req.flash('error');
 	res.locals.success = req.flash('success');
@@ -79,6 +93,6 @@ app.use(commentRoutes);
 
 //Listening to server
 var port = process.env.PORT || 3000;
-app.listen(port || process.env.PORT, process.env.IP, function () {
+app.listen(port || process.env.PORT, process.env.IP, function() {
 	console.log('Blog Server is Running and all is well!');
 });
